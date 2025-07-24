@@ -26,6 +26,13 @@ public class SortDemo1 {
 		movieList.add(m4);
 		Collections.sort(movieList);
 		System.out.println(movieList);
+		Collections.sort(movieList,new SortMovieByLanguage());
+		System.out.println(movieList);
+		Collections.sort(movieList,new SortByMovieName());
+		System.out.println(movieList);
+		Collections.sort(movieList,new SortByImdbRating());
+		System.out.println(movieList);
+		
 	}
 
 }
