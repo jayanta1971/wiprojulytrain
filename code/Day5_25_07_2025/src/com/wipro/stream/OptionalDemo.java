@@ -12,7 +12,7 @@ public class OptionalDemo {
 		Supplier<String> s =()->{return new RunTimeException("Data not present");}; 
 		Optional<String>str=Optional
 				       .ofNullable(source)
-				       .orElseThrow(s);		
+		 
 		System.out.println(str);
 	}
 
