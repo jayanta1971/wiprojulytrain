@@ -1,6 +1,6 @@
-package com.wipro.test;
+package com.wipro.clienttest;
 
-import com.wipro.menudemo.MyThread;
+import com.wipro.thread.MyThread;
 
 public class ThreadDemo {
 	

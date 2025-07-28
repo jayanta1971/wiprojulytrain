@@ -1,11 +1,11 @@
-package com.wipro.test;
+package com.wipro.clienttest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.wipro.menudemo.EvenThreadProcessor;
-import com.wipro.menudemo.OddThreadProcessor;
+import com.wipro.thread.EvenThreadProcessor;
+import com.wipro.thread.OddThreadProcessor;
 
 public class ThreadDemo2 {
 

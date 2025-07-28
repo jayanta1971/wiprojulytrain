@@ -1,4 +1,4 @@
-package com.wipro.menudemo;
+package com.wipro.thread;
 
 public class MyThread extends Thread {
 	
