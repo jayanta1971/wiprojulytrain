@@ -14,9 +14,14 @@
     <property name="capacity"  value="1.1" />
   </bean>
  
-  <bean id="car" class="com.wipro.sprindgdemo.beans.Car">
+  <!-- <bean id="car" class="com.wipro.sprindgdemo.beans.Car">
   <property name="make"  value="Hyundai" />
   <property name="engine"  ref="engine" /> 
+  </bean> -->
+  
+  <bean id="car" class="com.wipro.sprindgdemo.beans.Car">
+  <constructor-arg value="Tata" />
+  <constructor-arg ref="engine" />
   </bean>
   
   

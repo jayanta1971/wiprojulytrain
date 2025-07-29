@@ -5,6 +5,13 @@ public class Car {
 	String make;
 	Engine engine;
 	
+	
+	
+	public Car(String make, Engine engine) {
+		super();
+		this.make = make;
+		this.engine = engine;
+	}
 	public String getMake() {
 		return make;
 	}
