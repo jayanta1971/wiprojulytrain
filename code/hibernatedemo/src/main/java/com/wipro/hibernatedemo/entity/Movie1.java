@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="movie")
-public class Movie {
+public class Movie1 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;	
@@ -20,12 +20,21 @@ public class Movie {
 	@Column(name="imdb_rating")
 	double imdbRating;
 
-	public Movie() {
+	public Movie1() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Movie(String movieName, String movieLanguage, double imdbRating) {
+	public Movie1(String movieName, String movieLanguage, double imdbRating) {
 		super();	
+		this.movieName = movieName;
+		this.movieLanguage = movieLanguage;
+		this.imdbRating = imdbRating;
+	}
+	
+	
+	public Movie1(int id, String movieName, String movieLanguage, double imdbRating) {
+		super();
+		this.id = id;
 		this.movieName = movieName;
 		this.movieLanguage = movieLanguage;
 		this.imdbRating = imdbRating;
