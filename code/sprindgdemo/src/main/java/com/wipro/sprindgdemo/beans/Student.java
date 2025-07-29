@@ -25,10 +25,10 @@ public class Student {
 	public void setStudentRollNumber(String studentRollNumber) {
 		this.studentRollNumber = studentRollNumber;
 	}
-	@Override
-	public String toString() {
-		return "Student [studentName=" + studentName + ", studentRollNumber=" + studentRollNumber + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Student [studentName=" + studentName + ", studentRollNumber=" + studentRollNumber + "]";
+//	}
+//	
 
 }
