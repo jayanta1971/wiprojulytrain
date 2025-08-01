@@ -46,9 +46,22 @@ public class TouristPlaceServiceImpl implements TouristPlaceService {
 	}
 
 	@Override
-	public List<TouristPlace> findByToristPlaceType(String toristPlaceType) {
+	public List<TouristPlace> findByToristPlaceTypeOrderByToristPlaceNameDesc(String toristPlaceType) {
 		// TODO Auto-generated method stub
-		return touristPlaceRepo.findByToristPlaceType(toristPlaceType);
+		return touristPlaceRepo.findByToristPlaceTypeOrderByToristPlaceNameDesc(toristPlaceType);
+	}
+
+	@Override
+	public List<TouristPlace> findByToristPlaceTypeAndToristPlaceStateOrderByToristPlaceNameDesc(String toristPlaceType,
+			String toristPlaceState) {
+		// TODO Auto-generated method stub
+		return touristPlaceRepo.findByToristPlaceTypeAndToristPlaceStateOrderByToristPlaceNameDesc(toristPlaceType,toristPlaceState);
+	}
+
+	@Override
+	public Page<TouristPlace> findAll(Pageable p) {
+		// TODO Auto-generated method stub
+		return touristPlaceRepo.findAll(p);
 	}
 
 	 

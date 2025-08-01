@@ -73,14 +73,36 @@ public class TouristPlaceController {
 	@GetMapping("/type")
 	List<TouristPlace> findByToristPlaceType(@RequestParam String toristPlaceType)
 	{
-		return touristPlaceService.findByToristPlaceType(toristPlaceType);
+		return touristPlaceService.findByToristPlaceTypeOrderByToristPlaceNameDesc(toristPlaceType);
 		
 	}
 	@GetMapping("/typepath/{path}")
 	List<TouristPlace> findByToristPlaceTypePath(@PathVariable String path)
 	{
-		return touristPlaceService.findByToristPlaceType(path);
+		return touristPlaceService.findByToristPlaceTypeOrderByToristPlaceNameDesc(path);
 		
 	}
+	
+	@GetMapping("/typepath/{type}/{state}")
+	List<TouristPlace> findByToristPlaceTypePath(@PathVariable String type,@PathVariable String state)
+	{
+		return touristPlaceService.findByToristPlaceTypeAndToristPlaceStateOrderByToristPlaceNameDesc(type, state);
+		
+	}
+	@GetMapping("/page/{pageNum}/{pageSize}/{sortOrder}")
+	public Page<TouristPlace> findAllPage(@PathVariable int  pageNum,@PathVariable int  pageSize,@PathVariable int  sortOrder) {
+		Pageable p=null;
+	  if(sortOrder==0)
+	  {
+		  p=PageRequest.of(pageNum, pageSize,Sort.by("toristPlaceState").descending());
+	  }
+	  else
+	  {
+		    p=PageRequest.of(pageNum, pageSize,Sort.by("toristPlaceState").ascending());
+	  }
+		
+		return touristPlaceService.findAll(p);
+	}
+ 
 
 }

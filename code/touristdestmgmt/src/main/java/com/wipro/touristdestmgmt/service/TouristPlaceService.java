@@ -13,8 +13,9 @@ public interface TouristPlaceService {
 	List<TouristPlace> findAll();
 	TouristPlace findById(int id);
 	void deleteById(int id);
-	List<TouristPlace> findByToristPlaceType(String toristPlaceType);
-	
-//	Page<TouristPlace> findAll(Pageable p);
+	List<TouristPlace> findByToristPlaceTypeOrderByToristPlaceNameDesc(String toristPlaceType);
+	List<TouristPlace> findByToristPlaceTypeAndToristPlaceStateOrderByToristPlaceNameDesc(String toristPlaceType,String toristPlaceState);
+
+   Page<TouristPlace>  findAll(Pageable p); 
 	
 }
