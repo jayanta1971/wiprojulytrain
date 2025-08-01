@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.wipro.touristdestmgmt.entity.TouristPlace;
@@ -42,5 +44,13 @@ public class TouristPlaceServiceImpl implements TouristPlaceService {
 		 
 		touristPlaceRepo.deleteById(id);
 	}
+
+	@Override
+	public List<TouristPlace> findByToristPlaceType(String toristPlaceType) {
+		// TODO Auto-generated method stub
+		return touristPlaceRepo.findByToristPlaceType(toristPlaceType);
+	}
+
+	 
 
 }

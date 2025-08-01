@@ -3,6 +3,10 @@ package com.wipro.touristdestmgmt.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wipro.touristdestmgmt.entity.TouristPlace;
@@ -34,6 +39,15 @@ public class TouristPlaceController {
 		
 	}
 	
+//	@GetMapping("/p")
+//	Page<TouristPlace> findAllPage()
+//	{
+//		Pageable p= PageRequest.of(0, 10, Sort.by("toristPlaceType").ascending());
+//		System.out.println(p.getPageSize());
+//		return touristPlaceService.findAll(p);
+//		
+//	}
+	
 	
 	@GetMapping("/{id}")
 	TouristPlace findById(@PathVariable int id)
@@ -53,6 +67,19 @@ public class TouristPlaceController {
 	void deleteById(@PathVariable int id)
 	{
 		  touristPlaceService.deleteById(id);
+		
+	}
+	
+	@GetMapping("/type")
+	List<TouristPlace> findByToristPlaceType(@RequestParam String toristPlaceType)
+	{
+		return touristPlaceService.findByToristPlaceType(toristPlaceType);
+		
+	}
+	@GetMapping("/typepath/{path}")
+	List<TouristPlace> findByToristPlaceTypePath(@PathVariable String path)
+	{
+		return touristPlaceService.findByToristPlaceType(path);
 		
 	}
 
