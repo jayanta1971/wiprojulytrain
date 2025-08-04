@@ -23,5 +23,7 @@ public class Order {
 	@Column(name="order_value")
 	double orderValue;
 	
+	@Column(name="order_status")
+	String orderStatus;
 
 }
