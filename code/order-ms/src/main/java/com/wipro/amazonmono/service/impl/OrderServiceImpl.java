@@ -12,6 +12,10 @@ import com.wipro.amazonmono.dto.Payment;
 import com.wipro.amazonmono.entity.Order;
 import com.wipro.amazonmono.repo.OrderRepo;
 import com.wipro.amazonmono.service.OrderService;
+import com.wipro.amazonmono.service.PaymentConnectService;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+ 
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -21,8 +25,11 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	RestTemplate restTemplate;
-	
+	@Autowired
+	PaymentConnectService paymentConnectService;
+	 
 	@Override
+	@CircuitBreaker(name="order-cb" , fallbackMethod="handleFallBack")
 	public void save(Order order) {
 		order.setOrderStatus("I");
 		orderRepo.save(order);//insert
@@ -36,20 +43,22 @@ public class OrderServiceImpl implements OrderService {
 		
  
 		
-		try {
-			ResponseEntity<Payment>   response= restTemplate.postForEntity(url, payment, Payment.class);
+//		try {
+//			
+		ResponseEntity<Payment>   response=paymentConnectService.savePaymentData(payment);
+		//ResponseEntity<Payment>   response= restTemplate.postForEntity(url, payment, Payment.class);
 			
 		if(response.getStatusCode()==HttpStatusCode.valueOf(200))
 		{
 			order.setOrderStatus("P");
 			
 		}
-		 
-		}catch(Exception ex)
-		{
-			System.out.println(ex);
-			order.setOrderStatus("C");
-		}
+//		 
+//		}catch(Exception ex)
+//		{
+//			System.out.println(ex);
+//			order.setOrderStatus("C");
+//		}
 		orderRepo.save(order);//update
 	}
 
@@ -57,6 +66,13 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> findAll() {
 		 
 		return orderRepo.findAll();
+	}
+	
+	String handleFallBack(Throwable t)
+	{
+		
+		System.out.println("--System is down--");
+		return "System is down";
 	}
 
 }
