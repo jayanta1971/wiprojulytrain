@@ -28,4 +28,10 @@ public class PaymentServiceImpl implements PaymentService {
 		return paymentRepo.findAll();
 	}
 
+	@Override
+	public List<Payment> findByOrderId(int id) {
+		// TODO Auto-generated method stub
+		return paymentRepo.findByOrderId(id);
+	}
+
 }

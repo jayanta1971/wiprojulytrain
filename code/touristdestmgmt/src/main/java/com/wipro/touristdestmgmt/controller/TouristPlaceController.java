@@ -1,6 +1,7 @@
 package com.wipro.touristdestmgmt.controller;
 
 import java.util.List;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,12 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wipro.touristdestmgmt.entity.TouristPlace;
 import com.wipro.touristdestmgmt.service.TouristPlaceService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+@Tag(name = "Tutorial", description = "Tutorial management APIs")
 @RestController
 @RequestMapping("/touristplace")
 public class TouristPlaceController {
 	@Autowired
 	TouristPlaceService touristPlaceService;
-	
+	 @Operation(summary = "Save a tourist place")
+	  @ApiResponses(value = {
+	    @ApiResponse(responseCode = "200", description = "Saved successfully"),
+	    @ApiResponse(responseCode = "404", description = "Not found")
+	  })
 	@PostMapping
 	void save(@RequestBody TouristPlace touristPlace)
 	{

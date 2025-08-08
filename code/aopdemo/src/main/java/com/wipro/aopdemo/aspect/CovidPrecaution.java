@@ -1,7 +1,9 @@
 package com.wipro.aopdemo.aspect;
 
-import org.aopalliance.intercept.Joinpoint;
  
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -12,7 +14,7 @@ public class CovidPrecaution {
 	
 	
 	@Before("execution(* com.wipro.aopdemo..*(..))")
-	void showVacCard(Joinpoint jp)
+	void showVacCard(JoinPoint jp)
 	{
 		System.out.println("Please show your vaccination card");
 	}

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.wipro.amazonmono.dto.OrderResponse;
 import com.wipro.amazonmono.dto.Payment;
 import com.wipro.amazonmono.entity.Order;
 import com.wipro.amazonmono.repo.OrderRepo;
@@ -68,11 +69,26 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepo.findAll();
 	}
 	
-	String handleFallBack(Throwable t)
+	@Override
+	public OrderResponse findById(int id) {
+		 
+		OrderResponse response=new OrderResponse();
+		Order order=orderRepo.findById (id).get();
+		response.setOrder(order);
+		//ResponseEntity<Payment> pmt=restTemplate.getForEntity("http://localhost/payment/order/"+id, Payment.class);
+ 		ResponseEntity<Payment> pmt=paymentConnectService.findPaymentByOrderId(id);
+		response.setPayment(pmt.getBody());
+		return response;
+		 
+	}
+	
+	
+	
+	void handleFallBack(Throwable t)
 	{
 		
 		System.out.println("--System is down--");
-		return "System is down";
+		 
 	}
 
 }

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- 
+ 	  <jsp:include page="header.jsp" />
 	<form action="testsubmit" method="post" modelAttribute="logindata">
 
 		<div>
@@ -23,6 +23,6 @@
 
 	</form>
 
-
+  <jsp:include page="footer.jsp" />
 </body>
 </html>

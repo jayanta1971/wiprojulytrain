@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.wipro.mvcedemo2.entity.User;
+import com.wipro.mvcedemo2.entity.*; 
 
 @Controller
 @RequestMapping("/user")
@@ -31,8 +30,10 @@ public class LoginController {
 	{
 		 System.out.println("Test Submit");
 		 System.out.println();
+		 m.addAttribute("user",user);
 		return "usersuccess";
 	}
+ 
 
 
 }
