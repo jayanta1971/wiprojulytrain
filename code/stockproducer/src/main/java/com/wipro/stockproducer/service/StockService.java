@@ -1,9 +1,11 @@
 package com.wipro.stockproducer.service;
 
+import com.wipro.stockproducer.dto.Stock;
+
 public interface StockService {
 	
 	
-	void sendStockData(String stockCode,String stockPrice);
+	void sendStockData(Stock stock);
 	
 
 }
