@@ -1,0 +1,9 @@
+@for (emp of emplist; track $index) {
+
+ <div>{{emp.empId}}--{{emp.empName}}--{{emp.empSalary}}</div>
+
+}
+<div>Enter empId to delete: <input type="text" [(ngModel)]="empId"/> <button (click)="delete()">Delete</button></div>
+<div>Enter empId to delete: <input type="text" [(ngModel)]="empIdAdd"/> <input type="text" [(ngModel)]="empNameAdd"/><input type="text" [(ngModel)]="empSalaryAdd"/> <button (click)="save()">save</button></div>
+<div>Enter empId to edit: <input type="text" [(ngModel)]="empId"/> <button (click)="edit()">Edit</button></div>
+<div>Edit: <input type="text" [(ngModel)]="empIdAdd"/> <input type="text" [(ngModel)]="empNameAdd"/><input type="text" [(ngModel)]="empSalaryAdd"/> <button (click)="update()">update</button></div>
