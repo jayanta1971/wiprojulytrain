@@ -1,0 +1,6 @@
+@for (item of items; track $index) {
+
+  <app-product  [product]="item" (btnClick)="remove($event)" ></app-product>
+
+
+}

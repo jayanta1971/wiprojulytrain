@@ -1,0 +1,16 @@
+
+
+<!-- @if({{flag) {
+    <span>This is my message</span>
+} else {
+  <h1>Goodbye from Conditional Component</h1>
+} -->
+
+@if (flag) {
+<span>Flag true</span>
+}@else {
+  <span>Flag false</span>
+}
+
+
+<button (click)="toggle()">Hide/UnHide</button>
