@@ -1,0 +1,10 @@
+.class1{
+    
+    border: 10px solid red;
+    /* margin-top: 150px;
+    margin-left: 100px;   ;
+    margin-right: 50px;
+    margin-bottom: 50px; */
+    margin: 140px 120px 30px 100px; /* top right bottom left */
+
+}
