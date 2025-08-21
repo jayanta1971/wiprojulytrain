@@ -11,6 +11,24 @@
       "userName": "jayanta",
       "email": "jayanta.cal@yahoo.com",
       "password": "pass"
+    },
+    {
+      "id": "8891",
+      "userName": "user1",
+      "password": "user1",
+      "email": "use112@gmail.com"
+    },
+    {
+      "id": "5e8c",
+      "userName": "amit",
+      "email": "amit@gmail.com",
+      "password": "asas"
+    },
+    {
+      "id": "1e48",
+      "userName": "Vasu",
+      "email": "vasu@gmail.com",
+      "password": "asass"
     }
   ]
 }

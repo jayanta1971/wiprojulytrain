@@ -87,6 +87,7 @@ delete(userId: string) {
 }
 
 save(){
+
   console.log("saving data-"+this.userAdd)
   this.userService.saveUser(this.userAdd).subscribe((newUser: IUser) => {
     console.log('User saved successfully:', newUser);

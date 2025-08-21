@@ -28,7 +28,12 @@ export class UserService {
   }
 
   saveUser(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>('http://localhost:3000/user', user);
+    let userSave:Partial<IUser>= {
+        userName: user.userName,
+        email: user.email,
+        password: user.password
+    };
+    return this.http.post<IUser>('http://localhost:3000/user', userSave);
   }
 
 }
