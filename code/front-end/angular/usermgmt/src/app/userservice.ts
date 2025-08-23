@@ -11,26 +11,26 @@ export class Userservice {
   constructor(private http:HttpClient) { }
 
   getUsers():Observable<User[]>  {
-    let url:string="http://localhost:3000/users"
+    let url:string="http://localhost:9000/user"
     return this.http.get<User[]>(url);
   }
 
   addUser(user: User): Observable<User> {
-    let url:string="http://localhost:3000/users"
+    let url:string="http://localhost:9000/user"
     return this.http.post<User>(url, user);
   }
   deleteUser(id: string): Observable<void> {
-    let url:string=`http://localhost:3000/users/${id}`;
+    let url:string=`http://localhost:9000/user/${id}`;
     return this.http.delete<void>(url);
   }
 
   findUser(id: string): Observable<User> {
-    let url:string=`http://localhost:3000/users/${id}`;
+    let url:string=`http://localhost:9000/user/${id}`;
     return this.http.get<User>(url);
   }
 
   saveUser(user: User): Observable<User> {
-    let url:string=`http://localhost:3000/users/${user.id}`;
+    let url:string=`http://localhost:9000/user`;
     return this.http.put<User>(url, user);
 
 }
