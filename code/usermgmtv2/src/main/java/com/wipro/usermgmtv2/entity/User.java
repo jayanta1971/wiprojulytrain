@@ -1,5 +1,6 @@
 package com.wipro.usermgmtv2.entity;
 
+ 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,5 +23,8 @@ public class User {
 	
 	@Column
 	String email;
+	
+	@Column
+	String passWord;
 
 }

@@ -50,5 +50,14 @@ public class UserController {
 		
 	}
 	
+	@PostMapping("/login")
+	User login(@RequestBody User user)
+	{
+		String jwtToken=userServie.login(user);
+		System.out.println(jwtToken);
+		
+		return user;
+		
+	}
 
 }
