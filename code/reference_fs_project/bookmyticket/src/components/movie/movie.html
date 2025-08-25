@@ -1,0 +1,16 @@
+
+@for (movie of movieList; track $index) {
+
+  <div class="card" style="width: 18rem;">
+  <img src="{{movie.movieImage}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{movie.movieName}}</h5>
+  <p> {{movie.movieName}}-{{movie.movieLanguage}}-{{movie.ticketPrice}}</p>
+    <a href="#" class="btn btn-primary">Book</a>
+  </div>
+</div>
+
+
+
+
+}
