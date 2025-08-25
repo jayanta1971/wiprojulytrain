@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { IMovie } from '../../interfaces/movie';
 import { Moviservice} from '../../service/moviservice';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   imports: [],
   templateUrl: './movie.html',
   styleUrl: './movie.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 
 })
@@ -32,10 +33,11 @@ export class Movie {
         //console.log(data);
         this.movieList=data;
         console.log(this.movieList);
+         this.cdr.markForCheck();
 
 
     })
-       this.cdr.detectChanges()
+      // this.cdr.detectChanges()
   }
 
 }
