@@ -1,22 +1,30 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { IMovie } from '../../interfaces/movie';
-import { Moviservice } from '../../service/moviservice';
+import { Moviservice} from '../../service/moviservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
   imports: [],
   templateUrl: './movie.html',
-  styleUrl: './movie.css'
+  styleUrl: './movie.css',
+
+
 })
 export class Movie {
 
   movieList:IMovie[]=[];
 
-  constructor(private movieService:Moviservice,private cdr:ChangeDetectorRef){}
+  constructor(private movieService:Moviservice,private cdr:ChangeDetectorRef,private router:Router){}
 
   ngOnInit()
   {
 
+    let tokendata:any=localStorage.getItem("token");
+    if(tokendata==null)
+    {
+        this.router.navigate(["/login"])
+    }
 
     this.movieService.getAllMovies().subscribe((data)=>{
 

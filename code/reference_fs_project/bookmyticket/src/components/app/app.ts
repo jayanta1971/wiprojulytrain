@@ -9,5 +9,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
+
   protected title = 'bookmyticket';
+
+
+  logout() {
+
+      localStorage.removeItem("token")
+
+  }
 }

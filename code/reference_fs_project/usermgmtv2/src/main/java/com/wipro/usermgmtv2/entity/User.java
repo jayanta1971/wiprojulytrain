@@ -26,5 +26,8 @@ public class User {
 	
 	@Column
 	String passWord;
+	
+	@Column
+	String salt;
 
 }

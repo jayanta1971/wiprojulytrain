@@ -21,6 +21,7 @@ import com.wipro.usermgmtv2.entity.User;
 import com.wipro.usermgmtv2.repo.UserRepo;
 import com.wipro.usermgmtv2.service.UserService;
 import com.wipro.usermgmtv2.util.AppConstant;
+import com.wipro.usermgmtv2.util.EncryptUtil;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -66,8 +67,11 @@ public class USerServiceImpl implements UserService {
 	@Override
 	public Token login(User user) {
 		// TODO Auto-generated method stub
+		User userSalt=userRepo.findByEmail(user.getEmail());
 		
-		User userData=userRepo.findByEmailAndPassWord(user.getEmail(), user.getPassWord());
+		System.out.println("db salt="+userSalt);
+		String encrypTestPassword= EncryptUtil.getEncryptedPassword(user.getPassWord(),userSalt.getSalt());
+		User userData=userRepo.findByEmailAndPassWord(user.getEmail(),encrypTestPassword);
 		if(userData!=null)
 		{
  
