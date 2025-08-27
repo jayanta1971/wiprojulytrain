@@ -1,0 +1,43 @@
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="text" formControlName="fName" />
+
+  </div>
+  <!-- @if(fg.controls['fName'].touched){
+    <span> FName is Touched</span>
+  }
+  @if(fg.controls['fName'].dirty){
+    <span> FName is Dirty</span>
+  }
+  @if(fg.controls['fName'].invalid){
+    <span> FName is Required</span>
+  } -->
+    @if((fg.controls['fName'].invalid)&&((fg.controls['fName'].touched||fg.controls['fName'].dirty))){
+
+       @if(fg.controls['fName'].errors?.['required'])
+       {
+        <span> FName is Required</span>
+       }
+
+    }
+
+  <div>
+    <input type="text" formControlName="email" />
+    @if((fg.controls['email'].invalid)&&((fg.controls['email'].touched||fg.controls['email'].dirty))){
+
+       @if(fg.controls['email'].errors?.['required'])
+       {
+        <span> Email is Required</span>
+       }
+        @if(fg.controls['email'].errors?.['email'])
+       {
+        <span> Email is not in correct format</span>
+       }
+
+    }
+
+  </div>
+  <div>
+    <button type="submit"  [disabled]="fg.invalid" >Save</button>
+  </div>
+</form>

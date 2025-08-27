@@ -1,16 +1,16 @@
-
-@for (movie of movieList; track $index) {
-
-  <div class="card" style="width: 18rem;">
-  <img src="{{movie.movieImage}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{movie.movieName}}</h5>
-  <p> {{movie.movieName}}-{{movie.movieLanguage}}-{{movie.ticketPrice}}</p>
-    <a href="#" class="btn btn-primary">Book</a>
-  </div>
+<div class="row">
+  @for (movie of movieList; track $index) {
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
+      <div class="card" style="width: 18rem;">
+        <img src="{{movie.movieImage}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          {{movie.id}}
+          <h5 class="card-title">{{movie.movieName}}</h5>
+          <p> {{movie.movieName}}-{{movie.movieLanguage}}-{{movie.ticketPrice}}</p>
+           <p>Number of tickets:<input type="number" min="1" [(ngModel)]="numberOfTicket"  (change)="changeTicketNumber(movie.id!)"  max="5"/></p>
+          <a   class="btn btn-primary" (click)="save(movie.id!)">Book</a>
+        </div>
+      </div>
+    </div>
+  }
 </div>
-
-
-
-
-}

@@ -74,9 +74,9 @@ public class USerServiceImpl implements UserService {
 		User userData=userRepo.findByEmailAndPassWord(user.getEmail(),encrypTestPassword);
 		if(userData!=null)
 		{
- 
-			System.out.println(getJWTToken(user.getEmail())); 
-			String jwtToken="Bearer " + getJWTToken(user.getEmail());
+			String userId= String.valueOf(userData.getId());
+//			System.out.println(getJWTToken(user.getEmail())); 
+			String jwtToken="Bearer " + getJWTToken(userId);
 			System.out.println("token="+jwtToken);
 			Token token=new Token();
 			token.setToken(jwtToken);
@@ -87,13 +87,13 @@ public class USerServiceImpl implements UserService {
 	
 	
 
-	 private String getJWTToken(String username) {
+	 private String getJWTToken(String userId) {
 	        Key key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(AppConstant.SECRET));
 		 	List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 
 	        return Jwts.builder()
 	                .setId("jwtExample")
-	                .setSubject(username)
+	                .setSubject(userId)
 	                .claim("authorities", grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
 	                .setIssuedAt(new Date())
 	                .setExpiration(new Date(System.currentTimeMillis() + 600000))
