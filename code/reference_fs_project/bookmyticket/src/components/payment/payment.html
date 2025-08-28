@@ -17,9 +17,9 @@
       </div>
       <!--pricing table-->
       <div class="d-flex flex-row align-items-center">
-        <sup class="dollar font-weight-bold">$</sup>
-        <span class="amount ml-1 mr-1">8,350</span>
-        <span class="year font-weight-bold">/ year</span>
+
+        <span class="amount ml-1 mr-1">{{totalPrice|currency:'INR'}}</span>
+
       </div>
       <!-- /pricing table-->
     </div>
@@ -61,8 +61,9 @@
       />
     </div>
     <div class="mt-3">
-      <button class="btn btn-primary btn-block payment-button">
+      <button class="btn btn-primary btn-block payment-button"  (click)="pay()">
         Proceed to payment <i class="fa fa-long-arrow-right"></i>
+
       </button>
     </div>
   </div>

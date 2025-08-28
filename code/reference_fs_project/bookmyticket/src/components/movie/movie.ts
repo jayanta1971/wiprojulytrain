@@ -59,25 +59,30 @@ export class Movie {
 
   //      this.router.navigate(['/login'])
   // }
-  save(movieId:number){
+  async save(movieId:number){
 
- let  order:IOrder={
-        movieId:0,
-        numberOfTicket:0
-      }
-    let orderData:IOrder={
+let orderData:IOrder={
       movieId:movieId,
       numberOfTicket:this.numberOfTicket
 
-    }
+    };
 
-    this.orderService.save(orderData).subscribe((result)=>{
-      console.log(result)
-      order=result;
+
+     let  order:IOrder={
+        movieId:0,
+        numberOfTicket:0
+      };
+
+     (await this.orderService.save(orderData)).subscribe((result: IOrder)=>{
+
+           order=result;
+           console.log("result="+result.id)
+
+           this.router.navigate(['/payment/'+result.id+"/"+result.totalOrderPrice])
     })
 
 
-    this.router.navigate(['/payment/'+order.id])
+
 
   }
 

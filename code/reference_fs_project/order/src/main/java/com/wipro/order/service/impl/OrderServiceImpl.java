@@ -8,16 +8,19 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.web.header.Header;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.wipro.order.dto.Movie;
+import com.wipro.order.dto.Payment;
 import com.wipro.order.entity.OrderEntity;
 import com.wipro.order.entity.OrderMaster;
 import com.wipro.order.repo.OrderMasterRepo;
 import com.wipro.order.repo.OrderRepo;
 import com.wipro.order.service.OrderService;
+import com.wipro.order.util.AppConstant;
  
 
 @Service
@@ -31,6 +34,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	KafkaTemplate kafkaTemplate;
  
 	public List<OrderEntity> findAll() {
 		// TODO Auto-generated method stub
@@ -87,6 +93,13 @@ public class OrderServiceImpl implements OrderService {
 	public void deleteById(int id) {
 		// TODO Auto-generated method stub
 		orderRepo.deleteById(id);
+	}
+
+
+	@Override
+	public void pay(Payment payment) {
+		// TODO Auto-generated method stub
+		kafkaTemplate.send(AppConstant.OUTGOING_TOPIC_NAME,payment)	;
 	}
 
 
