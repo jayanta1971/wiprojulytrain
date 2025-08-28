@@ -14,8 +14,8 @@ export class Orderservice {
 
 
   constructor (private http:HttpClient){}
-
-  async save(order:IOrder):Promise<Observable<IOrder>>
+save(order:IOrder):Observable<IOrder>
+  // async save(order:IOrder):Promise<Observable<IOrder>>
   {
       console.log("--save--")
 
@@ -27,7 +27,7 @@ export class Orderservice {
       .set('Content-Type', 'application/json')
       .set('Authorization', `${token}`)
       let url:string= BASE_URL+ "/order";
-      return await this.http.post<IOrder>(url,order,{headers})
+      return   this.http.post<IOrder>(url,order,{headers})
 
 
 

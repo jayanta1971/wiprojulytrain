@@ -3,11 +3,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { IPayment } from '../../interfaces/payment';
 import { Paymentservice } from '../../app/service/paymentservice';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-payment',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe,NgxMaskDirective,FormsModule],
   templateUrl: './payment.html',
-  styleUrl: './payment.css'
+  styleUrl: './payment.css',
+  providers: [provideNgxMask()],
 
 })
 export class Payment {
@@ -17,8 +20,8 @@ export class Payment {
     private router:Router){}
   totalPrice:any='';
   orderId:any='';
-
-
+  accountNumber:string='';
+  cvv:number=0;
   ngOnInit()
   {
 
@@ -34,8 +37,8 @@ export class Payment {
         let  payment:IPayment={
             orderId:this.orderId,
             totalOrderPrice:this.totalPrice,
-            accountNumber:"123-45-678",
-            cvv:234,
+            accountNumber:this.accountNumber,
+            cvv:this.cvv,
             modeOfPayment:"card"
 
          };

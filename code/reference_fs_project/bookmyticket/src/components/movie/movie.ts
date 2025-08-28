@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {IOrder} from '../../interfaces/order';
 import { Orderservice } from '../../app/service/orderservice';
+
 @Component({
   selector: 'app-movie',
   imports: [FormsModule],
   templateUrl: './movie.html',
   styleUrl: './movie.css',
+
   changeDetection: ChangeDetectionStrategy.OnPush
 
 
@@ -23,7 +25,8 @@ export class Movie {
   constructor(private movieService:Moviservice,
     private cdr:ChangeDetectorRef,
     private router:Router,
-    private orderService:Orderservice
+    private orderService:Orderservice,
+
   ){}
 
   ngOnInit()
